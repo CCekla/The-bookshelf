@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>The Bookshelf</title>
+
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+      integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
+    />
+
+    <!--favicon-->
+
+    <link rel="apple-touch-icon" sizes="180x180" href="fav/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="fav/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="fav/favicon-16x16.png" />
+    <link rel="manifest" href="fav/site.webmanifest" />
+    <!-- fonts -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Source+Sans+Pro:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700;1,900&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- fonts -->
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="section">
+      <div class="container">
+        <h1 class="title is-size-1 has-text-centered font-display">
+          The Bookshelf
+        </h1>
+
+        <!-- SEARCH -->
+        <form class="search">
+          <div class="field">
+            <div class="control has-icons-right">
+              <input type="text" class="input" placeholder="Search" value="" />
+              <span class="icon is-small is-right">
+                <i class="fas fa-search"></i>
+              </span>
+            </div>
+          </div>
+        </form>
+      </div>
+    </header>
+
+    <main class="section">
+      <div class="container py-6 px-5 has-background-white">
+        <!--TABS-->
+        <div class="tabs is-centered is-boxed is-hidden-desktop">
+          <ul>
+            <li class="selected tab-btn">
+              <a class="is-size-4 font-display">
+                <span>To Read</span>
+              </a>
+            </li>
+            <li class="tab-btn">
+              <a class="is-size-4 font-display">
+                <span>Reading</span>
+              </a>
+            </li>
+            <li class="tab-btn">
+              <a class="is-size-4 font-display">
+                <span>Read</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+        <!--TABS END-->
+        <div class="columns">
+          <!--TO READ-->
+          <div class="column">
+            <h2 class="title font-display has-text-centered is-hidden-touch">
+              To Read
+            </h2>
+
+            <ul id="toread" class="book-list">
+              <li class="p-3 mb-4 book bk-toread" id="#bk-toread-0">
+                <p>
+                  <span class="font-display is-size-5 bk-title"
+                    >A book title</span
+                  >
+                  <span class="is-small bk-author">Book Author</span>
+                </p>
+                <p class="bk-icons">
+                  <i class="far fa-trash-alt pl-4 delete-book"></i>
+                  <i class="far fa-share-square pl-4 move-book"></i>
+                </p>
+              </li>
+
+              <li class="p-3 mb-4 book bk-toread" id="#bk-toread-1">
+                <p>
+                  <span class="font-display is-size-5 bk-title"
+                    >A book title</span
+                  >
+                  <span class="is-small bk-author">Book Author</span>
+                </p>
+                <p class="bk-icons">
+                  <i class="far fa-trash-alt pl-4 delete-book"></i>
+                  <i class="far fa-share-square pl-4 move-book"></i>
+                </p>
+              </li>
+
+              <li class="p-3 mb-4 book bk-toread" id="#bk-toread-2">
+                <p>
+                  <span class="font-display is-size-5 bk-title"
+                    >A book title</span
+                  >
+                  <span class="is-small bk-author">Book Author</span>
+                </p>
+                <p class="bk-icons">
+                  <i class="far fa-trash-alt pl-4 delete-book"></i>
+                  <i class="far fa-share-square pl-4 move-book"></i>
+                </p>
+              </li>
+            </ul>
+
+            <div class="has-text-centered">
+              <button
+                id="btn-toread"
+                class="button add-book"
+                data-target="add-new-book"
+              >
+                Add new book
+              </button>
+            </div>
+          </div>
+
+          <!--READING-->
+          <div class="column is-hidden-touch">
+            <h2 class="title font-display has-text-centered is-hidden-touch">
+              Reading
+            </h2>
+
+            <ul id="reading" class="book-list"></ul>
+
+            <div class="has-text-centered">
+              <button
+                id="btn-reading"
+                class="button add-book"
+                data-target="add-new-book"
+              >
+                Add new book
+              </button>
+            </div>
+          </div>
+
+          <!--READ-->
+          <div class="column is-hidden-touch">
+            <h2 class="title font-display has-text-centered is-hidden-touch">
+              Read
+            </h2>
+
+            <ul id="read" class="book-list"></ul>
+
+            <div class="has-text-centered">
+              <button
+                id="btn-read"
+                class="button add-book"
+                data-target="add-new-book"
+              >
+                Add new book
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="legend">
+          <p class="py-4 has-text-grey-light">
+            Legenda:<br />
+            <i class="far fa-trash-alt pr-4"></i> Remove book<br />
+            <i class="far fa-share-square pr-4"></i>Move book<br />
+            Click on card to edit book
+          </p>
+        </div>
+      </div>
+    </main>
+
+    <!-- MODALS -->
+
+    <!-- ADD NEW BOOK -->
+    <div id="add-new-book" class="modal">
+      <div class="modal-background"></div>
+      <div class="modal-card">
+        <header class="modal-card-head">
+          <p class="modal-card-title font-display">Add new book</p>
+          <button class="delete closing" aria-label="close"></button>
+        </header>
+        <section class="modal-card-body">
+          <form id="add-book-form" autocomplete="off">
+            <div class="field">
+              <label class="label">Title</label>
+              <div class="control">
+                <input
+                  class="input"
+                  type="text"
+                  name="bookTitle"
+                  placeholder="Book title"
+                />
+              </div>
+            </div>
+
+            <div class="field">
+              <label class="label">Author</label>
+              <div class="control">
+                <input
+                  class="input"
+                  type="text"
+                  name="bookAuthor"
+                  placeholder="Book author"
+                />
+              </div>
+            </div>
+          </form>
+        </section>
+        <footer class="modal-card-foot">
+          <button
+            id="add-book-btn"
+            class="button is-success"
+            type="submit"
+            form="add-book-form"
+            value="Submit"
+          >
+            Add
+          </button>
+          <button class="button closing">Cancel</button>
+        </footer>
+      </div>
+    </div>
+    <!-- ADD NEW BOOK -->
+
+    <!-- EDIT -->
+    <div id="edit-book" class="modal">
+      <div class="modal-background"></div>
+      <div class="modal-card">
+        <header class="modal-card-head">
+          <p class="modal-card-title font-display">Edit</p>
+          <button class="delete closing" aria-label="close"></button>
+        </header>
+        <section class="modal-card-body">
+          <form id="edit-book-form" autocomplete="off">
+            <div class="field">
+              <label class="label">Title</label>
+              <div class="control">
+                <input
+                  class="input"
+                  type="text"
+                  name="bookTitle"
+                  placeholder="Book title"
+                />
+              </div>
+            </div>
+
+            <div class="field">
+              <label class="label">Author</label>
+              <div class="control">
+                <input
+                  class="input"
+                  type="text"
+                  name="bookAuthor"
+                  placeholder="Book author"
+                />
+              </div>
+            </div>
+          </form>
+        </section>
+        <footer class="modal-card-foot">
+          <button
+            id="modify-book-btn"
+            class="button is-success"
+            form="edit-book-form"
+            type="submit"
+            value="Submit"
+          >
+            Save changes
+          </button>
+          <button class="button closing" aria-label="close">Cancel</button>
+        </footer>
+      </div>
+    </div>
+    <!-- MODIFY BOOK -->
+
+    <!-- VOTE -->
+    <div id="vote-book" class="modal">
+      <div class="modal-background"></div>
+      <div class="modal-card">
+        <header class="modal-card-head">
+          <p class="modal-card-title font-display">Did you like the book?</p>
+          <button class="delete closing" aria-label="close"></button>
+        </header>
+        <section class="modal-card-body">
+          <!-- radio buttons group smileys -->
+          <form id="voting">
+            <div class="control has-text-centered">
+              <label class="radio">
+                <input type="radio" name="smiley" value="&#129314;" />
+                &#129314;
+              </label>
+              <label class="radio">
+                <input type="radio" name="smiley" value="&#128528;" checked />
+                &#128528;
+              </label>
+              <label class="radio">
+                <input type="radio" name="smiley" value="&#128525;" />
+                &#128525;
+              </label>
+            </div>
+          </form>
+          <!-- end -->
+        </section>
+        <footer class="modal-card-foot">
+          <button
+            id="vote-book-btn"
+            class="button is-success"
+            form="voting"
+            type="submit"
+            value="Submit"
+          >
+            Vote
+          </button>
+          <button class="button closing" aria-label="close">Cancel</button>
+        </footer>
+      </div>
+    </div>
+    <!-- VOTE -->
+
+    <!-- CONFIRM MOVE -->
+    <div id="move-book" class="modal">
+      <div class="modal-background"></div>
+      <div class="modal-card">
+        <header class="modal-card-head">
+          <p class="modal-card-title font-display">Move the book</p>
+          <button class="delete closing" aria-label="close"></button>
+        </header>
+        <section class="modal-card-body">
+          Are you sure you want to move this book?
+        </section>
+        <footer class="modal-card-foot">
+          <button id="move-book-btn" class="button is-primary">
+            Move book
+          </button>
+          <button class="button closing" aria-label="close">Cancel</button>
+        </footer>
+      </div>
+    </div>
+    <!-- CONFIRM MOVE -->
+
+    <!-- CONFIRM REMOVE -->
+    <div id="remove-book" class="modal">
+      <div class="modal-background"></div>
+      <div class="modal-card">
+        <header class="modal-card-head">
+          <p class="modal-card-title font-display">Remove the book</p>
+          <button class="delete closing" aria-label="close"></button>
+        </header>
+        <section class="modal-card-body">
+          Are you sure you want to remove this book?
+        </section>
+        <footer class="modal-card-foot">
+          <button id="remove-book-btn" class="button is-danger">Remove</button>
+          <button class="button closing" aria-label="close">Cancel</button>
+        </footer>
+      </div>
+    </div>
+    <!-- CONFIRM REMOVE -->
+
+    <script src="script.js"></script>
+  </body>
+</html>

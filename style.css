@@ -1,0 +1,50 @@
+body {
+    background-color: linen;
+    font-family: 'Source Sans Pro', sans-serif;
+    min-height: 100vh;
+}
+
+.font-display {
+    font-family: 'Abril Fatface', cursive;
+}
+
+.container {
+    width:80%;
+    max-width: 1080px;
+}
+
+header.section {
+    padding-bottom: 1.5rem;
+}
+
+.search {
+    width: 100%;
+    max-width: 520px;
+    margin: 0 auto;
+}
+
+.tabs.is-boxed li.selected a {
+    background-color: #fff;
+    border-color: #dbdbdb;
+    border-bottom-color: rgb(219, 219, 219);
+    border-bottom-color: transparent !important;
+}
+
+.tabs li.selected a {
+    color: brown;
+}
+
+.book {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid #1a1a1a;
+} 
+
+.bk-title, .bk-author {
+    display: block;
+}
+
+.bk-icons i {
+    cursor: pointer;
+}
