@@ -45,6 +45,26 @@ const clearFields = (aForm) => {
 };
 
 //TRYING TO CODE SOME HELPERS
+
+//create a book card and insert to a list
+const createCard = (bkClass, bkId, bkTitle, bkAuthor, bkListId) => {
+  //create book card + add to ul
+  let card = `<li class="p-3 mb-4 book ${bkClass}" id="${bkId}">
+  <p>
+    <span class="font-display is-size-5 bk-title"
+      >${bkTitle}</span
+    >
+    <span class="is-small bk-author">${bkAuthor}</span>
+  </p>
+  <p class="bk-icons">
+    <i class="far fa-trash-alt pl-4 delete-book"></i>
+    <i class="far fa-share-square pl-4 move-book"></i>
+  </p>
+  </li>`;
+
+  document.querySelector(bkListId).innerHTML += card;
+}
+
 //remove book from array
 const removeFromArr = (arr, str) => {
   for (let i = 0; i < arr.length; i++) {
@@ -213,21 +233,7 @@ addBookForm.addEventListener("submit", (event) => {
 
     bkIdx = book.id;
 
-    //create book card + add to ul
-    let card = `<li class="p-3 mb-4 book ${bkClass}" id="${book.id}">
-    <p>
-      <span class="font-display is-size-5 bk-title"
-        >${book.title}</span
-      >
-      <span class="is-small bk-author">${book.author}</span>
-    </p>
-    <p class="bk-icons">
-      <i class="far fa-trash-alt pl-4 delete-book"></i>
-      <i class="far fa-share-square pl-4 move-book"></i>
-    </p>
-    </li>`;
-
-    document.querySelector(listId).innerHTML += card;
+    createCard(bkClass, bkIdx, book.title, book.author, listId);
   }
 
   //empty fields
