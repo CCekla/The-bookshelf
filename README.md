@@ -12,5 +12,12 @@ I know there are things yet to fix (like the styling), or that could have been d
 - Edit book infos
 - Move a book to the next list
 - "Rate" a book you just finished reading
+- Connected to a db
 
-In the future I plan on connecting it to some sort of database, and maybe even use it to track my limitless reading list, but this is not the day.
+## Technologies
+
++ Html
++ bulmaCSS
++ Javascript
++ Webpack
++ Firestore
