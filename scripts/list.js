@@ -187,6 +187,7 @@ voteForm.addEventListener('submit', event => {
    .then(() => {
     const el = document.getElementById(id);
     el.querySelector('.smile-vote').innerHTML = vote;
+    el.remove();
     voteBook.close();
   })
    .catch(error => console.log(error.message));
