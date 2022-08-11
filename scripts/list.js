@@ -114,10 +114,14 @@ addBookForm.addEventListener('submit', event => {
 removeBtn.addEventListener("click", () => {
   //get the book to remove id
   const bookId = deleteBook.modal.getAttribute('data-delete');
-  //delete the book
+
+  //delete the book from db
   bookshelf.removeBook(bookId)
     .then(() => deleteBook.close())
-    .catch(error => console.log(error.message))
+    .catch(error => console.log(error.message));
+
+  //delete the book from html
+  //document.getElementById(bookId).remove();
 });
 
 //MOVE BOOK
