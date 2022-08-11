@@ -20,10 +20,10 @@
 
     <!--favicon-->
 
-    <link rel="apple-touch-icon" sizes="180x180" href="fav/apple-touch-icon.png" />
-    <link rel="icon" type="image/png" sizes="32x32" href="fav/favicon-32x32.png" />
-    <link rel="icon" type="image/png" sizes="16x16" href="fav/favicon-16x16.png" />
-    <link rel="manifest" href="fav/site.webmanifest" />
+    <link rel="apple-touch-icon" sizes="180x180" href="../fav/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="../fav/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="../fav/favicon-16x16.png" />
+    <link rel="manifest" href="../fav/site.webmanifest" />
     <!-- fonts -->
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -66,17 +66,17 @@
         <!--TABS-->
         <div class="tabs is-centered is-boxed is-hidden-desktop">
           <ul>
-            <li class="selected tab-btn">
+            <li class="selected tab-btn" data-target="toread-col">
               <a class="is-size-4 font-display">
                 <span>To Read</span>
               </a>
             </li>
-            <li class="tab-btn">
+            <li class="tab-btn" data-target="reading-col">
               <a class="is-size-4 font-display">
                 <span>Reading</span>
               </a>
             </li>
-            <li class="tab-btn">
+            <li class="tab-btn" data-target="read-col">
               <a class="is-size-4 font-display">
                 <span>Read</span>
               </a>
@@ -86,12 +86,13 @@
         <!--TABS END-->
         <div class="columns">
           <!--TO READ-->
-          <div class="column">
+          <div class="column" id="toread-col">
             <h2 class="title font-display has-text-centered is-hidden-touch">
               To Read
             </h2>
 
-            <ul id="toread" class="book-list">
+            
+            <ul id="toread" class="book-list"><!--
               <li class="p-3 mb-4 book bk-toread" id="#bk-toread-0">
                 <p>
                   <span class="font-display is-size-5 bk-title"
@@ -103,39 +104,14 @@
                   <i class="far fa-trash-alt pl-4 delete-book"></i>
                   <i class="far fa-share-square pl-4 move-book"></i>
                 </p>
-              </li>
-
-              <li class="p-3 mb-4 book bk-toread" id="#bk-toread-1">
-                <p>
-                  <span class="font-display is-size-5 bk-title"
-                    >A book title</span
-                  >
-                  <span class="is-small bk-author">Book Author</span>
-                </p>
-                <p class="bk-icons">
-                  <i class="far fa-trash-alt pl-4 delete-book"></i>
-                  <i class="far fa-share-square pl-4 move-book"></i>
-                </p>
-              </li>
-
-              <li class="p-3 mb-4 book bk-toread" id="#bk-toread-2">
-                <p>
-                  <span class="font-display is-size-5 bk-title"
-                    >A book title</span
-                  >
-                  <span class="is-small bk-author">Book Author</span>
-                </p>
-                <p class="bk-icons">
-                  <i class="far fa-trash-alt pl-4 delete-book"></i>
-                  <i class="far fa-share-square pl-4 move-book"></i>
-                </p>
-              </li>
+              </li>-->
             </ul>
 
             <div class="has-text-centered">
               <button
                 id="btn-toread"
                 class="button add-book"
+                data-list="#toread"
                 data-target="add-new-book"
               >
                 Add new book
@@ -144,7 +120,7 @@
           </div>
 
           <!--READING-->
-          <div class="column is-hidden-touch">
+          <div class="column is-hidden-touch" id="reading-col">
             <h2 class="title font-display has-text-centered is-hidden-touch">
               Reading
             </h2>
@@ -155,6 +131,7 @@
               <button
                 id="btn-reading"
                 class="button add-book"
+                data-list="#reading"
                 data-target="add-new-book"
               >
                 Add new book
@@ -163,7 +140,7 @@
           </div>
 
           <!--READ-->
-          <div class="column is-hidden-touch">
+          <div class="column is-hidden-touch" id="read-col">
             <h2 class="title font-display has-text-centered is-hidden-touch">
               Read
             </h2>
@@ -174,6 +151,7 @@
               <button
                 id="btn-read"
                 class="button add-book"
+                data-list="#read"
                 data-target="add-new-book"
               >
                 Add new book
@@ -203,7 +181,7 @@
           <button class="delete closing" aria-label="close"></button>
         </header>
         <section class="modal-card-body">
-          <form id="add-book-form" autocomplete="off">
+          <form id="add-book-form" autocomplete="off" data-list="">
             <div class="field">
               <label class="label">Title</label>
               <div class="control">
@@ -294,10 +272,10 @@
         </footer>
       </div>
     </div>
-    <!-- MODIFY BOOK -->
+    <!-- EDIT BOOK -->
 
     <!-- VOTE -->
-    <div id="vote-book" class="modal">
+    <div id="vote-book" class="modal" data-vote="">
       <div class="modal-background"></div>
       <div class="modal-card">
         <header class="modal-card-head">
@@ -341,7 +319,7 @@
     <!-- VOTE -->
 
     <!-- CONFIRM MOVE -->
-    <div id="move-book" class="modal">
+    <div id="move-book" class="modal" data-move="">
       <div class="modal-background"></div>
       <div class="modal-card">
         <header class="modal-card-head">
@@ -362,7 +340,7 @@
     <!-- CONFIRM MOVE -->
 
     <!-- CONFIRM REMOVE -->
-    <div id="remove-book" class="modal">
+    <div id="remove-book" class="modal" data-delete="">
       <div class="modal-background"></div>
       <div class="modal-card">
         <header class="modal-card-head">
@@ -380,6 +358,6 @@
     </div>
     <!-- CONFIRM REMOVE -->
 
-    <script src="script.js"></script>
+    <script src="bundle.js"></script>
   </body>
 </html>

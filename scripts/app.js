@@ -1,29 +1,9 @@
-//TABS
-const selectTab = (event, tab) => {
-  //get all the list column and make them invisible
-  tabCol = document.querySelectorAll(".column");
-  for (let i = 0; i < tabCol.length; i++) {
-    tabCol[i].classList.add("is-hidden-touch");
-  }
+import Tabs from './ui/tabs'
 
-  //get all the tab buttons and deselect them
-  tabBtns = document.querySelectorAll(".tab-btn");
-  for (let i = 0; i < tabBtns.length; i++) {
-    tabBtns[i].classList.remove("selected");
-  }
+//create tabs
+const tabs = new Tabs(document.querySelector('.tabs'));
+tabs.init();
 
-  //show selected
-  document.getElementById(tab).closest('.column').classList.remove("is-hidden-touch");
-  event.target.closest("li").classList.add("selected");
-};
-
-const tabLinks = document.querySelectorAll(".tab-btn");
-tabLinks.forEach((btn) =>
-  btn.addEventListener("click", (event) => {
-    let txt = event.target.textContent.replace(' ','').toLowerCase();
-    selectTab(event, txt);
-  })
-);
 
 //BOOK LISTS
 let booksToRead = (booksReading = booksRead = []);

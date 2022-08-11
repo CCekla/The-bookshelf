@@ -45,6 +45,6 @@ header.section {
     display: block;
 }
 
-.bk-icons i {
+.book, .bk-icons i {
     cursor: pointer;
 }
