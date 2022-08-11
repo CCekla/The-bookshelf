@@ -61,6 +61,11 @@ booksLists.forEach((list) =>
       moveBook.modal.setAttribute('data-move', id);
       //open to move
       moveBook.open();
+    }else if (event.target.classList.contains("smile-vote")){
+      //send book id to modal
+      voteBook.modal.setAttribute('data-vote', id);
+      //open to vote
+      voteBook.open();
     } else {
       //open to edit
       const bookCard = event.target.closest("li");
@@ -117,11 +122,13 @@ removeBtn.addEventListener("click", () => {
 
   //delete the book from db
   bookshelf.removeBook(bookId)
-    .then(() => deleteBook.close())
+    .then(() => {
+      const el = document.getElementById(bookId)
+      el.remove();
+      deleteBook.close()
+    })
     .catch(error => console.log(error.message));
 
-  //delete the book from html
-  //document.getElementById(bookId).remove();
 });
 
 //MOVE BOOK
@@ -133,14 +140,16 @@ moveBtn.addEventListener('click', () => {
   const list = book.getAttribute('data-list');
   //get the new list
   const newList = (list === '#toread') ? '#reading' : '#read';
+  if(newList === '#read'){
+    voteBook.modal.setAttribute('data-vote', bookId);
+    voteBook.open();
+  }
   //move the book in db
   bookshelf.moveBook(bookId, newList)
     .then(() => {
-      if(newList === '#read'){
-        const id = document.querySelector(newList).lastElementChild.getAttribute('id');
-        voteBook.modal.setAttribute('data-vote', id);
-        voteBook.open();
-      }
+      const oldList = document.querySelector(list);
+      const el = oldList.querySelector('#'+ bookId);
+      el.remove();
       moveBook.close();
     }).catch(error => console.log(error.message));
 });
@@ -158,7 +167,11 @@ editBookForm.addEventListener('submit', event => {
 
     //update the book
     bookshelf.updateBook(bookId, title, author)
-      .then(() => editBook.close())
+      .then(() => {
+        const el = document.getElementById(bookId);
+        el.remove();
+        editBook.close();
+      })
       .catch(error => console.log(error.message));
   }
 });
@@ -169,8 +182,13 @@ voteForm.addEventListener('submit', event => {
 
   const id = voteBook.modal.getAttribute('data-vote');
   const vote = voteForm.smiley.value;
+
   bookshelf.voteBook(id, vote)
-   .then(() => voteBook.close())
+   .then(() => {
+    const el = document.getElementById(id);
+    el.querySelector('.smile-vote').innerHTML = vote;
+    voteBook.close();
+  })
    .catch(error => console.log(error.message));
 });
 

@@ -58,8 +58,11 @@ class Bookshelf {
         this.unsub = onSnapshot(q, snapshot => {
                 //everytime there's a snapshot this fires
                 snapshot.docChanges().forEach(change => {
-                    //update UI
-                    callback(change.doc);
+                    //checks the type of change
+                    if(change.type === 'added' || change.type === 'modified'){
+                        //update UI
+                        callback(change.doc);
+                    }
 
                 });
             });
@@ -78,8 +81,9 @@ class Bookshelf {
 
     //move book = update list
     async moveBook(id, newList) {
+        const time = new Date();
         const ref = doc(db, "books", id);
-        await updateDoc(ref, {list: newList});
+        await updateDoc(ref, {list: newList, created_at: Timestamp.fromDate(time)});
     }
 
     //vote book
