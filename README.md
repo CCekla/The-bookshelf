@@ -21,3 +21,9 @@ I know there are things yet to fix (like the styling), or that could have been d
 + Javascript
 + Webpack
 + Firestore
+
+## Instructions
+
+Coming soon...
+
+![the office](https://i.gifer.com/origin/1d/1d9bcd6a5f296db8c60fb00c6b3fd6c7_w200.gif)
